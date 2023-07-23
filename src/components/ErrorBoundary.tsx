@@ -17,6 +17,7 @@ class ErrorBoundary extends React.Component<Props, State> {
   }
 
   componentDidCatch(error: Error, errorInfo: ErrorInfo) {
+    // If the error was because of an aborted request, handle it appropriately
     console.log({ error, errorInfo })
   }
 
