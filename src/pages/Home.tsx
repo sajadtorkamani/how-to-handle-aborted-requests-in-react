@@ -38,7 +38,7 @@ const Home: React.FC = () => {
         error or if there's a runtime JavaScript error.
       </p>
 
-      <div className="max-w-[200px]">
+      <div className="max-w-[200px] mb-7">
         <Button
           className="block mb-4 text-green-700 border-green-700"
           isProcessing={isProcessing}
@@ -56,6 +56,12 @@ const Home: React.FC = () => {
           Cancel request
         </Button>
       </div>
+
+      <p>
+        Open up your console and you'll see that even though a{' '}
+        <code>CanceledError</code> is thrown when you cancel an in-progress
+        request, we can safely ignore the error in our ErrorBoundary component.
+      </p>
     </>
   )
 }
