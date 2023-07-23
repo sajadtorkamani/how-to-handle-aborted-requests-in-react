@@ -49,7 +49,13 @@ const Home: React.FC = () => {
 
         <Button
           className="text-red-700 border-red-700"
-          onClick={() => controller.abort()}
+          onClick={() => {
+            if (!isProcessing) {
+              alert("Click the 'Make request' button first")
+              return
+            }
+            controller.abort()
+          }}
         >
           Cancel request
         </Button>
