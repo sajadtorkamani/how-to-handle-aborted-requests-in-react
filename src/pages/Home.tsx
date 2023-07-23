@@ -3,8 +3,6 @@ import { useQuery } from 'react-query'
 import { apiService } from '../lib/apiService.ts'
 
 const Home: React.FC = () => {
-  const shouldRejectPromise = window.location.search.includes('reject=true')
-
   const {
     isLoading,
     isError,
@@ -12,24 +10,9 @@ const Home: React.FC = () => {
     data: books,
   } = useQuery(
     ['books'],
-    (): Promise<string[]> => {
-      console.count('Running query')
-
-      // Proxy the request using a HTTP proxy client
-      return apiService.get('/books')
-
-      // return new Promise((resolve, reject) => {
-      //   console.count('Running query')
-      //
-      //   // Create a little proxy server
-      //   return apiService.get('/books')
-      //   // if (shouldRejectPromise) {
-      //   //   reject(new Error('Something went wrong'))
-      //   //   return
-      //   // }
-      //   //
-      //   // resolve(['War and Peace', 'Frankenstein'])
-      // })
+    async () => {
+      const response = await apiService.get<string[]>('/books-error')
+      return response.data
     },
     {
       retry: false,

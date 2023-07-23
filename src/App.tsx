@@ -9,14 +9,14 @@ const queryClient = new QueryClient()
 
 const App: React.FC = () => {
   return (
-    <ErrorBoundary>
-      <QueryClientProvider client={queryClient}>
-        <Layout>
+    <Layout>
+      <ErrorBoundary>
+        <QueryClientProvider client={queryClient}>
           <Home />
-        </Layout>
-        <ReactQueryDevtools initialIsOpen={false} />
-      </QueryClientProvider>
-    </ErrorBoundary>
+          <ReactQueryDevtools initialIsOpen={false} />
+        </QueryClientProvider>
+      </ErrorBoundary>
+    </Layout>
   )
 }
 
