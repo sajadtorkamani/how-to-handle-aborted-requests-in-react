@@ -3,18 +3,16 @@ import App from './App.tsx'
 import './index.css'
 
 async function prepare() {
-  if (import.meta.env.DEV) {
-    const { worker } = await import('./mocks/browser.ts')
-    return worker.start({
-      onUnhandledRequest: (req, print) => {
-        if (!req.url.href.includes('/api')) {
-          return
-        }
+  const { worker } = await import('./mocks/browser.ts')
+  return worker.start({
+    onUnhandledRequest: (req, print) => {
+      if (!req.url.href.includes('/api')) {
+        return
+      }
 
-        print.error()
-      },
-    })
-  }
+      print.error()
+    },
+  })
 }
 
 prepare().then(() => {
