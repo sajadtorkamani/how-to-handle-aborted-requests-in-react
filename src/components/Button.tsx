@@ -12,7 +12,7 @@ const Button: React.FC<Props> = ({
   ...props
 }) => (
   <button
-    className={classNames('border border-black px-3 py-1', className)}
+    className={classNames('border border-black px-3 py-1 w-full', className)}
     disabled={isProcessing}
     {...props}
   >

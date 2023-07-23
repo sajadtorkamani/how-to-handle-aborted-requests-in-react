@@ -14,10 +14,6 @@ const Home: React.FC = () => {
     return response.data
   })
 
-  function handleCancelRequest() {
-    controller.abort()
-  }
-
   const isProcessing = createPostMutation.isLoading
 
   if (createPostMutation.error) {
@@ -25,9 +21,7 @@ const Home: React.FC = () => {
   }
 
   return (
-    <>
-      <h1 className="text-2xl font-bold mb-4">Home</h1>
-
+    <div className="max-w-[200px] mx-auto">
       <Button
         className="block mb-10 text-green-700 border-green-700"
         isProcessing={isProcessing}
@@ -40,11 +34,11 @@ const Home: React.FC = () => {
 
       <Button
         className="text-red-700 border-red-700"
-        onClick={handleCancelRequest}
+        onClick={() => controller.abort()}
       >
         Cancel request
       </Button>
-    </>
+    </div>
   )
 }
 

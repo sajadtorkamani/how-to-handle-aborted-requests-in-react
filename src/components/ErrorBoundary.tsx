@@ -1,10 +1,14 @@
-import React, { ErrorInfo } from 'react'
+import React from 'react'
+import { CanceledError } from 'axios'
 
 interface Props {
   children: React.ReactNode
 }
 
-type State = { hasError: boolean; error: Error | null }
+type State = {
+  hasError: boolean
+  error: Error | null
+}
 
 class ErrorBoundary extends React.Component<Props, State> {
   constructor(props: Props) {
@@ -13,15 +17,17 @@ class ErrorBoundary extends React.Component<Props, State> {
   }
 
   static getDerivedStateFromError(error: Error) {
-    return { hasError: true, error }
+    const hasError = error && !(error instanceof CanceledError)
+
+    return { hasError, error }
   }
 
-  componentDidCatch(error: Error, errorInfo: ErrorInfo) {
-    // If the error was because of an aborted request, handle it appropriately
-  }
+  // componentDidCatch(error: Error, errorInfo: ErrorInfo) {
+  //   console.log({ error, errorInfo })
+  // }
 
   render() {
-    const { hasError, error } = this.state
+    const { hasError } = this.state
 
     if (hasError) {
       return <>Some error occurred</>
