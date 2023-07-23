@@ -17,8 +17,8 @@ class ErrorBoundary extends React.Component<Props, State> {
   }
 
   static getDerivedStateFromError(error: Error) {
+    // If the error is a CanceledError, we can safely ignore it
     const hasError = error && !(error instanceof CanceledError)
-
     return { hasError, error }
   }
 
