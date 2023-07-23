@@ -21,24 +21,42 @@ const Home: React.FC = () => {
   }
 
   return (
-    <div className="max-w-[200px] mx-auto">
-      <Button
-        className="block mb-10 text-green-700 border-green-700"
-        isProcessing={isProcessing}
-        onClick={() => {
-          createPostMutation.mutate()
-        }}
-      >
-        Make request
-      </Button>
+    <>
+      <h1 className="text-2xl font-bold mb-6">
+        How to handle aborted requests in React
+      </h1>
 
-      <Button
-        className="text-red-700 border-red-700"
-        onClick={() => controller.abort()}
-      >
-        Cancel request
-      </Button>
-    </div>
+      <p className="mb-3">
+        If a query is cancelled for whatever reason (usually because a component
+        unmounts or network connection is lost), it's probably safe to silently
+        ignore it. We don't need to render a fallback UI showing a message like
+        "Oops, something went wrong".
+      </p>
+
+      <p className="mb-8">
+        That sort of fallback UI makes sense only for scenarios like a 500 API
+        error or if there's a runtime JavaScript error.
+      </p>
+
+      <div className="max-w-[200px]">
+        <Button
+          className="block mb-4 text-green-700 border-green-700"
+          isProcessing={isProcessing}
+          onClick={() => {
+            createPostMutation.mutate()
+          }}
+        >
+          Make request
+        </Button>
+
+        <Button
+          className="text-red-700 border-red-700"
+          onClick={() => controller.abort()}
+        >
+          Cancel request
+        </Button>
+      </div>
+    </>
   )
 }
 
