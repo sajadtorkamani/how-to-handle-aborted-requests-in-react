@@ -58,7 +58,7 @@ const Home: React.FC = () => {
       <p>
         Open up your console and you'll see that even though a{' '}
         <code>CanceledError</code> is thrown when you cancel an in-progress
-        request, we can safely ignore the error in our{' '}
+        request, you can safely ignore the error in your{' '}
         <a
           href="https://github.com/sajadtorkamani/how-to-handle-aborted-requests-in-react/blob/master/src/components/ErrorBoundary.tsx#L21"
           target="_blank"
