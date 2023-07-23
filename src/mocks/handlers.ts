@@ -8,10 +8,10 @@ export const handlers = [
     )
   }),
 
-  rest.post('/api/notes', (_req, res, ctx) => {
+  rest.post('/api/posts', (_req, res, ctx) => {
     return res(
       ctx.delay(10000),
-      ctx.status(500),
+      ctx.status(201),
       ctx.json(['War and Peace', 'Frankenstein', 'Stoner']),
     )
   }),
