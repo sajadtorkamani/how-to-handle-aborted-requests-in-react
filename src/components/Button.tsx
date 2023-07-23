@@ -1,5 +1,5 @@
 import React, { HTMLAttributes } from 'react'
-import * as classNames from 'classnames'
+import classNames from 'classnames'
 
 type Props = HTMLAttributes<HTMLButtonElement> & {
   isProcessing?: boolean
