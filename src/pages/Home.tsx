@@ -22,18 +22,16 @@ const Home: React.FC = () => {
 
   return (
     <>
-      <h1 className="text-2xl font-bold mb-6">
-        How to handle aborted requests in React
-      </h1>
+      <h1>How to handle aborted requests in React</h1>
 
-      <p className="mb-3">
+      <p>
         If a query is cancelled for whatever reason (usually because a component
         unmounts or network connection is lost), it's probably safe to silently
         ignore it. We don't need to render a fallback UI showing a message like
         "Oops, something went wrong".
       </p>
 
-      <p className="mb-7">
+      <p>
         That sort of fallback UI makes sense only for scenarios like a 500 API
         error or if there's a runtime JavaScript error.
       </p>
@@ -65,11 +63,22 @@ const Home: React.FC = () => {
           href="https://github.com/sajadtorkamani/how-to-handle-aborted-requests-in-react/blob/master/src/components/ErrorBoundary.tsx#L21"
           target="_blank"
           rel="noreferrer"
-          className="text-blue-600 underline"
         >
           ErrorBoundary component
         </a>
         .
+      </p>
+
+      <p>
+        This example uses Axios but the concept should be transferable to the{' '}
+        <a
+          href="https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API"
+          target="_blank"
+          rel="noreferrer"
+        >
+          Fetch API
+        </a>{' '}
+        or most data-fetching libraries.
       </p>
     </>
   )
