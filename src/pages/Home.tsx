@@ -1,5 +1,6 @@
 import React from 'react'
 import { useCreatePostMutation } from '../hooks/useCreatePostMutation.tsx'
+import Button from '../components/Button.tsx'
 
 const Home: React.FC = () => {
   const createPostMutation = useCreatePostMutation()
@@ -10,14 +11,14 @@ const Home: React.FC = () => {
     <>
       <h1 className="text-2xl font-bold mb-4">Home</h1>
 
-      <button
-        className="border border-black px-3 py-2"
+      <Button
+        isProcessing={isProcessing}
         onClick={() => {
           createPostMutation.mutate()
         }}
       >
-        {isProcessing ? 'Processing...' : 'Make request'}
-      </button>
+        Make request
+      </Button>
     </>
   )
 }
