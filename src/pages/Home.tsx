@@ -1,38 +1,23 @@
 import React from 'react'
-import { useQuery } from 'react-query'
-import { apiService } from '../lib/apiService.ts'
+import { useCreatePostMutation } from '../hooks/useCreatePostMutation.tsx'
 
 const Home: React.FC = () => {
-  const {
-    isLoading,
-    isError,
-    error,
-    data: books,
-  } = useQuery(
-    ['books'],
-    async () => {
-      const response = await apiService.get<string[]>('/books-error')
-      return response.data
-    },
-    {
-      retry: false,
-    },
-  )
+  const createPostMutation = useCreatePostMutation()
 
-  if (isLoading) {
-    return <p>Loading...</p>
-  }
-
-  if (isError || !books) {
-    throw error
-  }
+  const isProcessing = createPostMutation.isLoading
 
   return (
     <>
-      <h1 className="text-2xl font-bold mb-4">Books</h1>
-      {books.map((book, index) => (
-        <p key={index}>{book}</p>
-      ))}
+      <h1 className="text-2xl font-bold mb-4">Home</h1>
+
+      <button
+        className="border border-black px-3 py-2"
+        onClick={() => {
+          createPostMutation.mutate()
+        }}
+      >
+        {isProcessing ? 'Processing...' : 'Make request'}
+      </button>
     </>
   )
 }

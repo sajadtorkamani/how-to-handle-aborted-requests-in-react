@@ -8,7 +8,7 @@ async function prepare() {
     const { worker } = await import('./mocks/browser.ts')
     return worker.start({
       onUnhandledRequest: (req, print) => {
-        if (req.url.origin.includes('chrome-extension://')) {
+        if (!req.url.href.includes('/api')) {
           return
         }
 
