@@ -60,7 +60,16 @@ const Home: React.FC = () => {
       <p>
         Open up your console and you'll see that even though a{' '}
         <code>CanceledError</code> is thrown when you cancel an in-progress
-        request, we can safely ignore the error in our ErrorBoundary component.
+        request, we can safely ignore the error in our{' '}
+        <a
+          href="https://github.com/sajadtorkamani/how-to-handle-aborted-requests-in-react/blob/master/src/components/ErrorBoundary.tsx#L21"
+          target="_blank"
+          rel="noreferrer"
+          className="text-blue-600 underline"
+        >
+          ErrorBoundary component
+        </a>
+        .
       </p>
     </>
   )
