@@ -33,7 +33,7 @@ const Home: React.FC = () => {
         "Oops, something went wrong".
       </p>
 
-      <p className="mb-8">
+      <p className="mb-7">
         That sort of fallback UI makes sense only for scenarios like a 500 API
         error or if there's a runtime JavaScript error.
       </p>
